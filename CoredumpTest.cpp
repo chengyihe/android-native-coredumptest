@@ -6,27 +6,40 @@
 
 using namespace android;
 
-void test4()
+int test4()
 {
-    int len;
+    int ret = strlen(NULL);
 
-    ALOGD("Ready to crash");
-    ALOGD("strlen(NULL) = %d",  strlen(NULL));
+    ALOGD("enter %s: %d", __func__,  ret);
+
+    return ret;
 }
 
-void test3()
+int test3()
 {
-    test4();
+    int ret = test4() + 3;
+
+    ALOGD("enter %s: %d", __func__, ret);
+
+    return ret;
 }
 
-void test2()
+int test2()
 {
-    test3();
+    int ret = test3() + 2;
+
+    ALOGD("enter %s: %d", __func__, ret);
+
+    return ret;
 }
 
-void test1()
+int test1()
 {
-    test2();
+    int ret = test2() + 1;
+
+    ALOGD("enter %s: %d", __func__, ret);
+
+    return ret;
 }
 
 int main()
@@ -40,8 +53,8 @@ int main()
         return 1;
     }
 
+    int n = test1();
     ALOGD("Ready to enter test");
-    test1();
 
     return 0;
 }
